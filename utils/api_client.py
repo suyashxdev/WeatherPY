@@ -24,7 +24,3 @@ def get_weather_info(city: str):
     except Exception as e:
         print(Back.YELLOW + Fore.RED + f" ERROR: {e}" + Style.RESET_ALL)
         return None
-    
-data = get_weather_info("patna, india")
-with open("test.json", "w") as f:
-    json.dump(data,f, indent=4)
