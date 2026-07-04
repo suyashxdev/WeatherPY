@@ -1,0 +1,9 @@
+WeatherPY is still evolving, and several exciting features are planned for the next update.
+
+Upcoming improvements for v2 include:
+
+1. Local database support and a caching system to reduce API calls and improve overall performance using the sqlite3 module.
+2. A more polished and interactive user interface built with Python's Textual library.
+3. Enhanced user experience with better error handling, faster response times, and smoother navigation.
+
+These updates aim to make the app faster, more efficient, and much more visually appealing.
