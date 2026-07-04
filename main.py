@@ -5,6 +5,7 @@ from colorama import Fore, Back, Style, init
 from config import DEBUG, APP_VERSION, APP_NAME
 from utils.api_client import get_weather_info
 from utils.formatter import display_weather
+from utils.db_manager import Cache
 
 # initialize colorama
 init(autoreset=True)
@@ -49,6 +50,7 @@ def main():
     typing_speed("Tip: You can type 'help' to know more.")
     if DEBUG:
         typing_speed(f"APP VERSION: {APP_VERSION}")
+    cache = Cache() # initializing Cache
     while True:
         typing_speed("Enter the name of the city: ", end=True)
         user_input = input(">> ").lower()
@@ -58,11 +60,18 @@ def main():
             break
         typing_speed("fetching the weather update, please wait.")
         loading_dots("Extracting",remove_text=True)
-        data = get_weather_info(user_input)
-        if isinstance(data, dict):
-            display_weather(data)
+        start_time = time.time()
+        cache_dict = cache.get_cached_weather(user_input)
+        if cache_dict != None:
+            display_weather(cache_dict)
         else:
-            continue
+            data = get_weather_info(user_input)
+            if isinstance(data, dict):
+                display_weather(data)
+                cache.save_weather(user_input, data)
+        end_time = time.time()
+        if DEBUG:
+            print(f"Time Taken to compute: {round(end_time - start_time,6)} seconds")
 
 if __name__ == "__main__":
     main()
