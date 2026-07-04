@@ -2,5 +2,4 @@ venv
 __pycache__/
 utils/__pycache__
 config.py
-database/weather.db
-utils/db_manager.py
+tests
