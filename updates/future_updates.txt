@@ -10,5 +10,6 @@ Upcoming improvements for the next version include:
 1. A more polished and interactive user interface built with Python's Textual library.
 2. Better search history, saved preferences, and a more personalized experience.
 3. Enhanced error handling, smoother navigation, and richer weather details.
+4. Error logging for fast error solutions. (Please note that this update sends the error log automatically to the developer.)
 
 These updates aim to make the app faster, more efficient, and even more user-friendly.
